@@ -1,48 +1,101 @@
-const services = [
-  { icon: "↗", title: "Market Entry & Strategy", text: "Practical guidance for organisations navigating energy markets, stakeholders and opportunities across East Africa." },
-  { icon: "⌁", title: "Project Development Support", text: "Connect project owners, developers, EPC contractors and technical partners to help move viable projects forward." },
-  { icon: "◇", title: "Finance & Risk Coordination", text: "Support introductions and coordination across financing, insurance and other project-enabling requirements." },
-  { icon: "◎", title: "Partnerships & Deal Flow", text: "Build relevant relationships, identify potential counterparties and structure productive conversations." },
-  { icon: "▥", title: "Opportunity Intelligence", text: "Curate project leads, procurement notices and market updates for qualified industry participants." },
-  { icon: "⌂", title: "Stakeholder Advisory", text: "Understand the local context and coordinate engagement with public, private and development-sector stakeholders." },
-];
+import Link from "next/link";
+import { ProjectCard } from "@/components/ProjectCard";
+import { PostList } from "@/components/PostList";
+import { projects, services, updates } from "@/lib/content";
 
 const steps = [
-  { n: "01", title: "Understand the opportunity", text: "We clarify your objectives, project stage, geography, constraints and the partners you need." },
-  { n: "02", title: "Map the right connections", text: "We identify relevant developers, contractors, funders, insurers and other market participants." },
-  { n: "03", title: "Coordinate the next steps", text: "We help align stakeholders, surface requirements and keep discussions focused on practical progress." },
+  { n: "01", title: "Understand", text: "We clarify the opportunity, the market and what you need to move forward." },
+  { n: "02", title: "Prepare", text: "We organise the requirements, documents and information partners will ask for." },
+  { n: "03", title: "Connect", text: "We introduce the right developers, contractors, financiers and insurers." },
+  { n: "04", title: "Coordinate", text: "We keep conversations focused on practical next steps." },
 ];
 
 export default function Home() {
+  const live = projects.filter((p) => p.status !== "Closed").slice(0, 3);
   return (
     <>
-      <div className="topbar"><div className="container topbar-inner"><span>Energy-sector insight. Regional connections. Practical progress.</span><span>Kenya · East Africa</span></div></div>
-      <header className="container nav">
-        <a className="brand" href="#home" aria-label="Energy Advisory home"><span className="brand-mark">E</span><span>ENERGY<span style={{ color: "var(--green)" }}> ADVISORY</span></span></a>
-        <nav className="navlinks" aria-label="Main navigation"><a href="#about">About</a><a href="#services">Services</a><a href="#approach">Our approach</a><a href="#opportunities">Opportunities</a><a href="#contact">Contact</a></nav>
-        <a className="button button-primary" href="#contact">Discuss a project <span aria-hidden="true">↗</span></a>
-      </header>
+      <section className="hero">
+        <div className="container hero-grid">
+          <div>
+            <span className="eyebrow">Energy consulting · East Africa</span>
+            <h1>From energy opportunity to project delivery, <em>with the right partners.</em></h1>
+            <p className="hero-copy">
+              We help contractors, developers and project owners navigate the East African energy market, find
+              opportunities and connect with the finance and insurance partners projects need.
+            </p>
+            <div className="hero-actions">
+              <Link className="button button-primary" href="/projects">View project opportunities <span aria-hidden="true">→</span></Link>
+              <Link className="button button-outline" href="/contact">Discuss a project</Link>
+            </div>
+          </div>
+          <div className="visual" aria-hidden="true">
+            <span className="visual-label">How we add value</span>
+            <div className="value-chain">
+              {["Market advice", "Project opportunities", "Contract support", "Finance connections", "Insurance coordination"].map((item, i) => (
+                <div className="value-step" key={item}><b>0{i + 1}</b><span>{item}</span></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <main id="home">
-        <section className="hero"><div className="container hero-grid">
-          <div><span className="eyebrow">Independent energy-sector advisory</span><h1>Turning regional energy ambition into <em>real opportunity.</em></h1><p className="hero-copy">We help energy businesses navigate East Africa's evolving markets by connecting the right people, projects and resources to move opportunities forward.</p><div className="hero-actions"><a className="button button-primary" href="#contact">Start a conversation <span aria-hidden="true">→</span></a><a className="button" style={{ border: "1px solid var(--line)", background: "white" }} href="#services">Explore our services</a></div><p className="hero-note">Advisory · Project connections · Market coordination</p></div>
-          <div className="visual" aria-label="Illustrative energy-sector strategy graphic"><div className="visual-top"><span className="visual-label">East Africa energy landscape</span><h2>Good projects need more than good technology.</h2></div><div className="energy-bars"><div className="energy-bar"><span>01 / Insight</span><strong>Clarity</strong></div><div className="energy-bar"><span>02 / Network</span><strong>Connections</strong></div><div className="energy-bar"><span>03 / Delivery</span><strong>Momentum</strong></div></div><div className="visual-bottom"><span>Market knowledge</span><span>Partnership-led approach</span></div></div>
-        </div></section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div><span className="eyebrow">What we do</span><h2>Advice and connections that move projects forward.</h2></div>
+            <Link className="text-link" href="/services">All services <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="cards">
+            {services.map((s) => (
+              <article className="card" key={s.slug}><h3>{s.title}</h3><p>{s.summary}</p></article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <section className="trust-strip"><div className="container trust-inner"><span className="trust-title">Connecting the energy value chain</span><span className="trust-item">PROJECT DEVELOPERS</span><span className="trust-item">EPC CONTRACTORS</span><span className="trust-item">FINANCIAL PARTNERS</span><span className="trust-item">INSURANCE & RISK</span></div></section>
+      <section className="section tinted">
+        <div className="container">
+          <div className="section-heading">
+            <div><span className="eyebrow">Latest opportunities</span><h2>Projects for contractors.</h2></div>
+            <Link className="text-link" href="/projects">See all projects <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="cards">{live.map((p) => <ProjectCard key={p.slug} project={p} />)}</div>
+        </div>
+      </section>
 
-        <section className="section" id="services"><div className="container"><div className="section-heading"><div><span className="eyebrow">What we do</span><h2>Make the right connections. Navigate complexity with confidence.</h2></div><p>Our role is to bring market understanding and relevant stakeholders together—helping clients see the path ahead and take informed next steps.</p></div><div className="cards">{services.map((service) => <article className="card" key={service.title}><div className="card-icon" aria-hidden="true">{service.icon}</div><h3>{service.title}</h3><p>{service.text}</p></article>)}</div></div></section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div><span className="eyebrow">How we work</span><h2>A clear path from first conversation to next steps.</h2></div>
+          </div>
+          <div className="steps">
+            {steps.map((s) => (
+              <div className="step" key={s.n}><div className="step-number">{s.n}</div><h3>{s.title}</h3><p>{s.text}</p></div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <section className="section" id="about" style={{ background: "#edf2eb" }}><div className="container split"><div className="dark-panel"><span className="eyebrow" style={{ color: "var(--lime)" }}>Our role</span><h2>A trusted link between ambition and execution.</h2><p>Energy projects rarely move forward through technical expertise alone. They also need market context, aligned partners, finance pathways and clear coordination.</p><div className="check-list"><div className="check"><b>✓</b><span>Regional perspective grounded in East African market realities</span></div><div className="check"><b>✓</b><span>Connections across project development and delivery ecosystems</span></div><div className="check"><b>✓</b><span>Practical, relationship-led support tailored to each opportunity</span></div></div></div><div><span className="eyebrow">About our approach</span><h2 style={{ fontSize: "clamp(32px,4vw,44px)", lineHeight: 1.15, margin: "16px 0 20px" }}>Independent advice. Collaborative execution.</h2><p style={{ color: "var(--muted)", lineHeight: 1.85 }}>We work at the intersection of energy advisory, project opportunity and stakeholder coordination. Depending on the brief, we can help clients identify potential partners, facilitate introductions and coordinate conversations around financing, insurance and project delivery.</p><p style={{ color: "var(--muted)", lineHeight: 1.85 }}>We believe the best outcomes begin with a clear understanding of the opportunity, transparent expectations and the right people at the table.</p><a className="button button-primary" href="#contact" style={{ marginTop: 10 }}>Tell us what you are working on <span aria-hidden="true">→</span></a></div></div></section>
+      <section className="section tinted">
+        <div className="container split">
+          <div>
+            <span className="eyebrow">Updates</span>
+            <h2>Regular news and project notices.</h2>
+            <p className="muted">Deadline changes, new opportunities and company announcements in one place.</p>
+            <Link className="text-link" href="/updates">All updates <span aria-hidden="true">→</span></Link>
+          </div>
+          <PostList posts={updates.slice(0, 2)} base="/updates" />
+        </div>
+      </section>
 
-        <section className="section" id="approach"><div className="container"><div className="section-heading"><div><span className="eyebrow">How we work</span><h2>A clear path from first conversation to next steps.</h2></div><p>Every engagement is different. We start with the real need, then build a focused plan around the opportunity and stakeholders involved.</p></div><div className="steps">{steps.map((step) => <div className="step" key={step.n}><div className="step-number">{step.n}</div><div><h3>{step.title}</h3><p>{step.text}</p></div></div>)}</div></div></section>
-
-        <section className="section opportunity" id="opportunities"><div className="container"><div className="section-heading"><div><span className="eyebrow">Project opportunities</span><h2>Stay close to the opportunities shaping the region.</h2></div><p>A future opportunity hub will share curated project leads, procurement notices and updates for contractors, developers and qualified partners.</p></div><div className="opportunity-panel"><div><h3>Looking for the right project or partner?</h3><p>Tell us your sector, geography and capabilities. We can discuss whether there may be a relevant opportunity or introduction.</p></div><a className="button button-primary" href="#contact">Register your interest <span aria-hidden="true">→</span></a></div></div></section>
-
-        <section className="section" id="contact"><div className="container split"><div><span className="eyebrow">Let's talk</span><h2 style={{ fontSize: "clamp(34px,4vw,48px)", lineHeight: 1.12, margin: "16px 0 18px" }}>What opportunity are you looking to move forward?</h2><p style={{ color: "var(--muted)", lineHeight: 1.8 }}>Share a little about your organisation, project or partnership needs. Our team can follow up to understand the next steps.</p><div className="notice" style={{ marginTop: 24 }}>This is the initial website scaffold. The contact form will be connected to a secure backend and company inbox during the integration phase.</div></div><div className="card" style={{ minHeight: "auto" }}><h3>Start a conversation</h3><form className="form-grid" action="mailto:hello@example.com" method="post" encType="text/plain"><input name="name" placeholder="Your name" aria-label="Your name" required /><input name="company" placeholder="Organisation" aria-label="Organisation" /><input name="email" type="email" placeholder="Work email" aria-label="Work email" required /><select name="interest" aria-label="Area of interest" defaultValue=""><option value="" disabled>Area of interest</option><option>Energy advisory</option><option>Project development</option><option>EPC / contracting opportunity</option><option>Financing or insurance coordination</option><option>Partnership / market entry</option><option>Other</option></select><textarea name="message" placeholder="Tell us briefly about your project or goals" aria-label="Project or goals" required /><button className="button button-primary full" type="submit">Send enquiry <span aria-hidden="true">→</span></button></form><p style={{ fontSize: 12, color: "var(--muted)", marginTop: 14 }}>Temporary form: replace the placeholder email and connect a secure submission endpoint before launch.</p></div></div></section>
-      </main>
-
-      <footer className="footer"><div className="container"><div className="footer-grid"><div><a className="brand" href="#home"><span className="brand-mark" style={{ background: "var(--lime)", color: "var(--ink)" }}>E</span><span>ENERGY ADVISORY</span></a><p>Energy-sector insight, project connections and practical coordination for businesses navigating East Africa.</p></div><div><h4>Explore</h4><div className="footer-links"><a href="#about">About us</a><a href="#services">Services</a><a href="#approach">How we work</a><a href="#opportunities">Project opportunities</a></div></div><div><h4>Connect</h4><div className="footer-links"><a href="#contact">Contact the team</a><a href="#contact">Partnership enquiries</a><a href="#contact">Project enquiries</a></div></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Energy Advisory. All rights reserved.</span><span>Company name, details and contact information to be confirmed.</span></div></div></footer>
+      <section className="section">
+        <div className="container">
+          <div className="cta-panel">
+            <div><h2>Have an energy project or want to bid on one?</h2><p>Tell us what you are working on and we will advise on the next steps.</p></div>
+            <Link className="button button-light" href="/contact">Get in touch <span aria-hidden="true">→</span></Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

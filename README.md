@@ -1,15 +1,19 @@
 # East Africa Energy Consulting Platform
 
-A starter website for an energy-sector advisory business serving Kenya and the wider East African market. This branch contains the first public-facing website scaffold and instructions for expanding it into a project-opportunity portal.
+A website preview for an energy consulting business serving Kenya and the wider East African market, built to show the client before the name, brand and content are approved.
 
-## Included
-- Responsive Next.js + TypeScript landing page
-- Service, about, approach, project-opportunity and contact sections
+## Included (preview)
+- Placeholder brand "Energy Advisory Company" with a temporary SVG logo (`components/Logo.tsx`)
+- Pages: Home, About, Services, Projects (filterable board + detail pages with expression-of-interest form), Insights, Updates, Downloads, Contact
+- All listings and posts are clearly labelled samples and live in `lib/content.ts`; brand and contact placeholders live in `lib/site.ts`
+- Forms are preview-only: they validate in the browser and send nothing
+- No database or environment variables are needed to run or deploy the preview
+- Pages are set to `noindex` so the preview stays out of search engines
 - Initial environment-variable template
 - Claude Code project guidance in `CLAUDE.md`
 - Optional Claude Code GitHub Actions workflow in `.github/workflows/claude.yml`
 
-> **Not production-ready yet:** the company brand and contact details are placeholders. The contact form currently uses a temporary `mailto:` action and is not connected to a secure backend, spam protection or email service.
+> **Not production-ready yet:** the company brand, contact details, listings and posts are placeholders, and the forms are not connected to any backend, spam protection or email service.
 
 ## Requirements
 - Node.js 20+
@@ -39,7 +43,7 @@ npm run build
 3. Add secure staff CMS and role-based permissions.
 4. Add opportunity records with country, technology, scope, deadline, status, visibility tier, attachments, expressions of interest, review and expiry dates.
 5. Add contractor registration, private document access, audit history and project-linked email notifications.
-6. Decide whether staff need shared project inboxes or full individual Gmail/Microsoft 365 mailboxes.
+6. Staff email: use cPanel mailboxes in Microsoft Outlook (no in-platform staff email portal). Website forms will email the company inbox via Resend, and the footer will link to cPanel webmail once a domain exists (`site.webmailUrl`).
 
 ## Claude Code workflow
 The workflow responds when someone mentions `@claude` in an issue or pull request discussion. To activate it:

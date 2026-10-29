@@ -16,65 +16,95 @@ export const services: Service[] = [
       "Practical guidance for organisations entering or expanding in the Kenyan and East African energy markets.",
     points: [
       "Market and stakeholder landscape briefings",
-      "Regulatory and procurement pathways explained",
+      "Regulatory and procurement context",
       "Opportunity screening and go / no-go advice",
     ],
   },
   {
-    slug: "contracts",
-    title: "Contract & Tender Support",
+    slug: "project-development",
+    title: "Project Development Advisory",
     summary:
-      "Help contractors find suitable opportunities, check eligibility and prepare complete, compliant bids.",
+      "Support for project sponsors and delivery teams in shaping projects and keeping development on track.",
+    points: [
+      "Project briefs and readiness reviews",
+      "Development planning and milestones",
+      "Stakeholder coordination",
+    ],
+  },
+  {
+    slug: "procurement",
+    title: "Procurement & Tender Advisory",
+    summary:
+      "Guidance on procurement processes, bid readiness and the documentation projects are expected to provide.",
     points: [
       "Opportunity tracking and bid calendars",
-      "Eligibility and document checklists",
-      "Bid coordination within an agreed scope",
+      "Eligibility and compliance checklists",
+      "Bid preparation support within an agreed scope",
     ],
   },
   {
-    slug: "project-development",
-    title: "Project Development Support",
+    slug: "commercial",
+    title: "Commercial & Investment Advisory",
     summary:
-      "Bring project owners, developers and EPC contractors together and keep the next steps moving.",
+      "Help strengthening the commercial case for a project and preparing it for the conversations that follow.",
     points: [
-      "Project briefs and readiness checks",
-      "Introductions between owners, developers and contractors",
-      "Action tracking across stakeholders",
+      "Commercial and investment-readiness reviews",
+      "Project information packs",
+      "Engagement planning with the wider project ecosystem",
     ],
   },
   {
-    slug: "finance",
-    title: "Finance Connections",
+    slug: "risk",
+    title: "Risk & Regulatory Advisory",
     summary:
-      "Prepare project information and introduce sponsors and contractors to potential lenders and investors.",
+      "A clear view of the regulatory landscape and the risks a project needs to plan for.",
     points: [
-      "Finance-readiness checklists",
-      "Project summaries for funders",
-      "Introductions to prospective financiers",
-    ],
-  },
-  {
-    slug: "insurance",
-    title: "Insurance & Risk Coordination",
-    summary:
-      "Organise project risk information and coordinate with licensed insurance brokers and insurers.",
-    points: [
-      "Insurance requirement checklists",
-      "Risk information packs for brokers",
-      "Coordination of quotations through licensed partners",
+      "Regulatory and permitting landscape",
+      "Project risk registers",
+      "Compliance considerations by market",
     ],
   },
   {
     slug: "intelligence",
-    title: "Opportunity Intelligence",
+    title: "Market Intelligence",
     summary:
-      "Curated project leads, procurement notices and market updates for contractors and partners.",
+      "Curated opportunities, sector updates and market insight for organisations active in the region.",
     points: [
       "Regular opportunity updates",
       "Sector and country briefings",
-      "Notices relevant to registered contractors",
+      "Notices for registered contractors",
     ],
   },
+];
+
+export const sectors = [
+  { title: "Solar PV", text: "Commercial, industrial and utility-scale solar." },
+  { title: "Mini-grids & off-grid", text: "Energy access for communities and remote sites." },
+  { title: "Energy storage", text: "Battery systems for reliability and flexibility." },
+  { title: "Grid & transmission", text: "Distribution, substations and network upgrades." },
+  { title: "Energy efficiency", text: "Lower energy costs for buildings and industry." },
+];
+
+export const markets = [
+  { country: "Kenya", note: "Head office · Nairobi" },
+  { country: "Uganda", note: "Regional coverage" },
+  { country: "Tanzania", note: "Regional coverage" },
+  { country: "Rwanda", note: "Regional coverage" },
+  { country: "Ethiopia", note: "Regional coverage" },
+];
+
+export const audiences = [
+  { title: "Developers & sponsors", text: "Shaping projects and moving them through development." },
+  { title: "Contractors", text: "Finding suitable opportunities and preparing to bid." },
+  { title: "Investors", text: "Understanding markets and project pipelines in the region." },
+  { title: "Institutions & businesses", text: "Planning energy projects for their own operations." },
+];
+
+export const principles = [
+  { title: "Independent", text: "Advice shaped by the client's interests and the facts of the project." },
+  { title: "Local insight", text: "Grounded in how energy projects are developed in East Africa." },
+  { title: "Discreet", text: "Client information and commercial discussions handled in confidence." },
+  { title: "Practical", text: "Focused on decisions and next steps, not reports for their own sake." },
 ];
 
 export type ProjectStatus = "Open" | "Closing soon" | "Closed";
@@ -259,32 +289,31 @@ export const insights: Post[] = [
   },
   {
     slug: "finance-ready-project",
-    title: "What makes an energy project ready for finance conversations",
+    title: "What makes an energy project investment-ready",
     date: "2026-10-08",
     category: "Guide",
     excerpt:
-      "Funders make their own decisions, but well-organised information makes those conversations much more productive.",
+      "Well-organised project information makes every later conversation faster and more productive.",
     body: [
       "A clear project summary: location, technology, size, owner and current stage.",
       "Evidence of site rights, permits applied for or obtained, and the expected energy buyer.",
       "Realistic cost estimates and a delivery schedule from a capable contractor.",
-      "A list of known risks and how they will be managed or insured.",
+      "A list of known risks and how they will be managed.",
     ],
     sample: true,
   },
   {
-    slug: "insurance-checklist",
-    title: "An insurance checklist for energy construction projects",
+    slug: "project-timeline",
+    title: "From concept to construction: planning a realistic project timeline",
     date: "2026-09-26",
-    category: "Checklist",
+    category: "Guide",
     excerpt:
-      "Common cover types to discuss with a licensed broker early in the project.",
+      "Most delays are predictable. Planning for them early keeps a project credible with every stakeholder.",
     body: [
-      "Contractor's all-risks / construction all-risks cover.",
-      "Third-party liability.",
-      "Marine cargo for imported equipment.",
-      "Delay in start-up, where lenders require it.",
-      "Always confirm the right cover with a licensed insurance broker or insurer.",
+      "Allow time for site studies and data collection before committing to a design.",
+      "Map the permits and approvals needed and the order in which they are granted.",
+      "Build procurement and contracting time into the plan, not just construction.",
+      "Agree who owns each milestone and how progress will be reported.",
     ],
     sample: true,
   },

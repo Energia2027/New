@@ -1,42 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChartCard } from "@/components/ChartCard";
+import { GrowthChart } from "@/components/charts";
 import { PageHero } from "@/components/PageHero";
+import { markets, principles } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = { title: "About" };
-
-const values = [
-  { title: "Integrity", text: "Honest advice, clear roles and no promises we cannot keep." },
-  { title: "Local knowledge", text: "An understanding of how energy projects get done in East Africa." },
-  { title: "Partnership", text: "Bringing owners, contractors, financiers and insurers to the same table." },
-  { title: "Follow-through", text: "Practical coordination until the next step is agreed." },
-];
 
 export default function About() {
   return (
     <>
       <PageHero
         eyebrow="About us"
-        title="A trusted link between energy opportunities and the partners who deliver them."
-        intro={`${site.name} is an energy consulting firm serving Kenya and the wider East African region.`}
+        title="Independent energy advisory, grounded in East Africa."
+        intro={`${site.name} advises organisations developing, delivering and investing in energy projects across Kenya and the wider region.`}
       />
       <section className="section">
         <div className="container split">
           <div className="prose">
             <h2>Who we are</h2>
             <p>
-              We advise businesses and project stakeholders who want to work in the East African energy sector. We help
-              them understand the market, identify opportunities and connect with the people and organisations needed to
-              move projects forward.
+              We are a Nairobi-based energy consultancy. Our clients come to us for a clear reading of the market, an
+              honest assessment of their opportunity and practical support as their projects develop.
             </p>
             <p>
-              We work closely with contractors to help them secure suitable projects, and we coordinate introductions to
-              potential financiers and licensed insurance providers.
+              We combine sector knowledge with long-standing regional relationships, and we work discreetly on behalf of
+              our clients.
             </p>
-            <h2>What we are not</h2>
+            <h2>Our approach</h2>
             <p>
-              We are not an EPC contractor, a lender or an insurer. Contractors deliver the works, financiers make their
-              own funding decisions and licensed insurers provide cover. Our role is advice, preparation and introductions.
+              Every engagement starts with the client&apos;s objectives. We focus on the decisions that matter, bring in
+              specialist expertise where a project needs it, and keep the work practical.
             </p>
           </div>
           <div className="dark-panel">
@@ -48,9 +43,25 @@ export default function About() {
       </section>
       <section className="section tinted">
         <div className="container">
-          <div className="section-heading"><div><span className="eyebrow">Our values</span><h2>How we work with clients and partners.</h2></div></div>
+          <div className="section-heading"><div><span className="eyebrow">Our principles</span><h2>How we work with clients.</h2></div></div>
           <div className="cards four">
-            {values.map((v) => <article className="card" key={v.title}><h3>{v.title}</h3><p>{v.text}</p></article>)}
+            {principles.map((p) => <article className="card" key={p.title}><h3>{p.title}</h3><p>{p.text}</p></article>)}
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading"><div><span className="eyebrow">Where we work</span><h2>Based in Nairobi, working across East Africa.</h2></div></div>
+          <ul className="market-list">
+            {markets.map((m) => <li key={m.country}><strong>{m.country}</strong><span>{m.note}</span></li>)}
+          </ul>
+          <div style={{ marginTop: 24 }}>
+            <ChartCard
+              title="A fast-growing region: electricity generation, 2000 vs 2024"
+              subtitle="Terawatt-hours per year in each of our markets, with the growth multiple since 2000."
+            >
+              <GrowthChart />
+            </ChartCard>
           </div>
           <p style={{ marginTop: 32 }}><Link className="button button-primary" href="/contact">Talk to us <span aria-hidden="true">→</span></Link></p>
         </div>

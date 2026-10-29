@@ -15,6 +15,22 @@ A website preview for an energy consulting business serving Kenya and the wider 
 
 > **Not production-ready yet:** the company brand, contact details, listings and posts are placeholders, and the forms are not connected to any backend, spam protection or email service.
 
+## Charts and market data
+- Charts on Home, Insights and About, and the lifecycle diagram on Services, are hand-built SVG components in `components/charts.tsx` and `components/Lifecycle.tsx` (no chart library).
+- Data lives in `lib/energy-data.ts`, extracted from the [Our World in Data energy dataset](https://github.com/owid/energy-data) (Ember; Energy Institute Statistical Review). Re-extract from that dataset to update; headline figures in `components/EnergyStats.tsx` are derived from the same file.
+- Every chart has a legend, hover tooltips, a data table and a source line.
+
+## Launch checklist: search engines, cookies, legal
+The preview is hidden from search engines (`noindex` and `robots.txt` disallow everything). At launch:
+1. In Vercel → Settings → Environment Variables, set for **Production only**:
+   - `NEXT_PUBLIC_SITE_URL=https://<company-domain>`
+   - `NEXT_PUBLIC_ALLOW_INDEXING=true`
+   - `GOOGLE_SITE_VERIFICATION=<token>` (from Google Search Console's HTML-tag method)
+2. Redeploy. This switches on indexing, `robots.txt` with a sitemap link, `/sitemap.xml` and organisation structured data. Preview deployments stay hidden.
+3. In [Google Search Console](https://search.google.com/search-console), verify the domain and submit `https://<company-domain>/sitemap.xml`.
+4. Replace the placeholder Privacy, Terms and Cookie policy pages with wording from the client's legal adviser (Kenya Data Protection Act 2019).
+5. The site sets no analytics or advertising cookies. If analytics is added, add a consent banner and update `/cookies` first.
+
 ## Requirements
 - Node.js 20+
 - npm

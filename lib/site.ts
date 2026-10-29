@@ -2,13 +2,15 @@
 export const site = {
   name: "Energy Advisory Company",
   shortName: "Energy Advisory",
-  tagline: "Energy consulting and project connections for East Africa.",
+  tagline: "Independent energy advisory for East Africa.",
   description:
-    "Energy-sector advice, project opportunities and the right connections to contractors, financiers and insurers across Kenya and East Africa.",
+    "Independent energy advisory for organisations working across Kenya and East Africa — market insight, project development support and trusted regional relationships.",
   region: "Kenya · East Africa",
   email: "info@[company-domain]",
   phone: "[+254 phone number]",
   address: "[Office address], Nairobi, Kenya",
+  hours: "[Office hours, e.g. Mon–Fri]",
+  registration: "[Company registration no.]",
   // cPanel webmail lives at https://<domain>/webmail once a domain exists.
   webmailUrl: null as string | null,
 };

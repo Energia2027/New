@@ -11,7 +11,7 @@ export default function Contact() {
       <PageHero
         eyebrow="Contact"
         title="Tell us about your project."
-        intro="Whether you have a project, want to bid on one or are exploring the East African market, we would like to hear from you."
+        intro="Whether you are planning a project, pursuing an opportunity or exploring the East African market, we would like to hear from you. All enquiries are treated in confidence."
       />
       <section className="section">
         <div className="container split">
@@ -21,6 +21,7 @@ export default function Contact() {
               <div><dt>Email</dt><dd>{site.email}</dd></div>
               <div><dt>Phone</dt><dd>{site.phone}</dd></div>
               <div><dt>Office</dt><dd>{site.address}</dd></div>
+              <div><dt>Hours</dt><dd>{site.hours}</dd></div>
             </dl>
             <div className="notice">Contact details are placeholders until the company confirms them.</div>
           </div>
@@ -33,10 +34,10 @@ export default function Contact() {
               <Field label="I am a…">
                 <select name="type" defaultValue="" required>
                   <option value="" disabled>Choose one</option>
-                  <option>Project owner / developer</option>
-                  <option>EPC contractor</option>
-                  <option>Financier / investor</option>
-                  <option>Insurance provider</option>
+                  <option>Developer / project sponsor</option>
+                  <option>Contractor</option>
+                  <option>Investor</option>
+                  <option>Institution / business</option>
                   <option>Other</option>
                 </select>
               </Field>

@@ -15,6 +15,13 @@ export const site = {
   webmailUrl: null as string | null,
 };
 
+// Search engine indexing is OFF until launch. To go live, set in Vercel (Production only):
+//   NEXT_PUBLIC_SITE_URL=https://<company-domain>
+//   NEXT_PUBLIC_ALLOW_INDEXING=true
+//   GOOGLE_SITE_VERIFICATION=<token from Google Search Console>   (optional)
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+export const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
+
 export const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },

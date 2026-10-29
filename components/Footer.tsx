@@ -51,6 +51,7 @@ export function Footer() {
           <ul className="footer-meta">
             <li><Link href="/privacy">Privacy policy</Link></li>
             <li><Link href="/terms">Terms of use</Link></li>
+            <li><Link href="/cookies">Cookie policy</Link></li>
             <li>
               {site.webmailUrl ? (
                 <a href={site.webmailUrl}>Staff webmail</a>

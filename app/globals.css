@@ -264,3 +264,60 @@ h1, h2, h3 { font-family: Manrope, system-ui, sans-serif; letter-spacing: -0.03e
   .download-list li .button { grid-column: 1 / -1; }
   .cta-panel, .dark-panel { padding: 28px; }
 }
+
+/* Charts & infographics */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 0; }
+.stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+.stat dd { margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: clamp(36px, 4vw, 48px); letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
+.stat dt { color: var(--muted); font-size: 14px; }
+.stat:first-child { background: var(--ink); border-color: var(--ink); }
+.stat:first-child dd { color: var(--lime); }
+.stat:first-child dt { color: #c8d6d1; }
+.chart-stack { display: grid; gap: 24px; }
+.chart-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.chart-card { margin: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; min-width: 0; }
+.chart-card figcaption h3 { font-size: 19px; }
+.chart-card figcaption p { color: var(--muted); font-size: 14px; margin: 6px 0 14px; }
+.chart-source { font-size: 12px; color: var(--muted); margin: 14px 0 0; }
+.chart-source a { text-decoration: underline; }
+.viz { position: relative; min-width: 0; }
+.viz svg { display: block; overflow: visible; }
+.viz-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 0; margin: 0 0 14px; font-size: 13px; color: var(--ink); }
+.viz-legend li { display: inline-flex; align-items: center; gap: 7px; }
+.swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.dot-key { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: var(--green); }
+.dot-key.hollow { background: var(--white); border: 2px solid var(--green); }
+.viz-tooltip { position: absolute; pointer-events: none; background: var(--white); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(16, 42, 42, 0.12); border-radius: 10px; padding: 10px 12px; font-size: 13px; display: grid; gap: 4px; min-width: 160px; z-index: 5; }
+.tip-row { display: flex; align-items: center; gap: 7px; }
+.tip-row b { margin-left: auto; padding-left: 12px; }
+.viz-table { margin-top: 12px; font-size: 13px; }
+.viz-table summary { cursor: pointer; color: var(--green); font-weight: 700; }
+.viz-table-scroll { overflow-x: auto; margin-top: 10px; }
+.viz-table table { border-collapse: collapse; width: 100%; white-space: nowrap; }
+.viz-table th, .viz-table td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+.viz-table th:first-child { text-align: left; }
+.viz-table thead th { color: var(--muted); font-weight: 600; }
+.lifecycle { margin: 0; }
+.lifecycle ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; counter-reset: lc; }
+.lifecycle li { position: relative; display: grid; gap: 6px; align-content: start; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 16px; }
+.lifecycle li:not(:last-child)::after { content: ''; position: absolute; top: 34px; right: -13px; width: 14px; height: 2px; background: var(--green); }
+.lifecycle strong { font-family: Manrope, sans-serif; font-size: 15px; }
+.lifecycle li > span:last-child { font-size: 13px; color: var(--muted); }
+.lc-num { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--tint); color: var(--green); font-weight: 800; font-size: 14px; }
+.lifecycle li:last-child .lc-num { background: var(--green); color: var(--white); }
+.lifecycle figcaption { font-size: 13px; color: var(--muted); margin-top: 14px; }
+@media (max-width: 1040px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .chart-pair { grid-template-columns: 1fr; }
+  .lifecycle ol { grid-template-columns: repeat(4, 1fr); }
+  .lifecycle li:nth-child(4)::after { display: none; }
+}
+@media (max-width: 600px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat { padding: 18px; }
+  .chart-card { padding: 18px; }
+  .lifecycle ol { grid-template-columns: 1fr; }
+  .lifecycle li { grid-template-columns: 32px 1fr; column-gap: 14px; }
+  .lifecycle li > span:last-child { grid-column: 2; }
+  .lifecycle li:not(:last-child)::after, .lifecycle li:nth-child(4)::after { display: block; top: auto; bottom: -13px; left: 31px; right: auto; width: 2px; height: 14px; }
+}

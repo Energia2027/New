@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { ChartCard } from "@/components/ChartCard";
+import { RegionalMixChart } from "@/components/charts";
+import { EnergyStats } from "@/components/EnergyStats";
 import { ProjectCard } from "@/components/ProjectCard";
 import { PostList } from "@/components/PostList";
 import { audiences, markets, principles, projects, sectors, services, updates } from "@/lib/content";
@@ -62,6 +65,21 @@ export default function Home() {
                 <p>{s.summary}</p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div><span className="eyebrow">Market data</span><h2>East Africa&apos;s energy at a glance.</h2></div>
+            <Link className="text-link" href="/insights">More market data <span aria-hidden="true">→</span></Link>
+          </div>
+          <EnergyStats />
+          <div style={{ marginTop: 28 }}>
+            <ChartCard title="Electricity mix by country, 2024" subtitle="Share of generation by source.">
+              <RegionalMixChart />
+            </ChartCard>
           </div>
         </div>
       </section>

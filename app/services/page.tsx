@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Lifecycle } from "@/components/Lifecycle";
 import { PageHero } from "@/components/PageHero";
 import { sectors, services } from "@/lib/content";
 
@@ -28,6 +29,15 @@ export default function Services() {
               <ul className="ticks">{s.points.map((p) => <li key={p}>{p}</li>)}</ul>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div><span className="eyebrow">Across the lifecycle</span><h2>Support at every stage of a project.</h2></div>
+            <Link className="text-link" href="/insights">See market data <span aria-hidden="true">→</span></Link>
+          </div>
+          <Lifecycle />
         </div>
       </section>
       <section className="section tinted">

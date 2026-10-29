@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChartCard } from "@/components/ChartCard";
+import { GrowthChart } from "@/components/charts";
 import { PageHero } from "@/components/PageHero";
 import { markets, principles } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -53,6 +55,14 @@ export default function About() {
           <ul className="market-list">
             {markets.map((m) => <li key={m.country}><strong>{m.country}</strong><span>{m.note}</span></li>)}
           </ul>
+          <div style={{ marginTop: 24 }}>
+            <ChartCard
+              title="A fast-growing region: electricity generation, 2000 vs 2024"
+              subtitle="Terawatt-hours per year in each of our markets, with the growth multiple since 2000."
+            >
+              <GrowthChart />
+            </ChartCard>
+          </div>
           <p style={{ marginTop: 32 }}><Link className="button button-primary" href="/contact">Talk to us <span aria-hidden="true">→</span></Link></p>
         </div>
       </section>
